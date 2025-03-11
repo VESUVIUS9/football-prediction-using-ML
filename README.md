@@ -1,22 +1,28 @@
-Introduction 
 Chapter 1: Project Research 
+
 1.1 Inspiration about the project  
+
 EA (Electronic Arts), the company behind the EA FC football game series, is known for 
 using advanced simulations and algorithms to predict the outcomes of major football 
 tournaments. In its game, EA FC, simulations are run to replicate real-world football 
 scenarios, predicting outcomes based on team and player data. EA uses historical 
 performance, player statistics, and team dynamics to simulate matches, providing an 
 engaging and realistic experience for players. 
+
 The company has successfully predicted the winners of the last four World Cups by 
 running these simulations, which consider various factors such as team strength, player 
 form, and match conditions. 
+
 Inspired by EA’s approach, this project aims to replicate similar prediction models for real
 world football match outcomes. By analysing historical data spanning decades, the project 
 applies machine learning techniques to predict match results, focusing on key factors like 
 offense, defense, and goalkeeper performance. The goal is to offer insights for better 
 decision-making in football and sports analytics, similar to how EA FC uses simulations 
 to enhance its game experience and predict tournament winners. 
+
+
 1.2 Research on Project requirements 
+
 We conducted comprehensive research to determine the most effective methods, 
 algorithms, and tools for building a reliable football match prediction system. After 
 evaluating various approaches, we identified Monte Carlo simulation as a key technique 
@@ -24,12 +30,14 @@ due to its ability to model uncertainty and simulate numerous match scenarios. B
 incorporating variables such as team performance metrics, historical match data, and FIFA 
 rankings, Monte Carlo simulations allowed us to analyze a wide range of outcomes and 
 predict match results effectively. 
-9 
+
+
 Additionally, we explored machine learning algorithms like logistic regression, Random 
 Forest, and SGD SVM, assessing their strengths in handling classification tasks and 
 identifying patterns within complex datasets. These algorithms were chosen for their 
 ability to improve prediction accuracy and uncover the relationships between key factors 
 influencing match outcomes. 
+
 For the development environment, Python was selected for its robust ecosystem of 
 libraries, including pandas, Scikit-learn, and Matplotlib, which facilitated efficient data 
 analysis, machine learning implementation, and visualization. We also chose VS Code for 
@@ -39,14 +47,18 @@ To present the insights dynamically, we used Streamlit to build interactive dash
 making it easier for users to explore and interpret the results. This combination of 
 simulations, machine learning, and Python’s versatility provided a strong foundation for 
 our project. 
+
 Language: Python 
+
 Libraries :  
 Data Manipulation 
 • numpy (np): For numerical computations and array manipulations. 
 • pandas (pd): For handling tabular data and performing data analysis. 
+
 Visualization 
 • matplotlib.pyplot (plt): For creating static, interactive, and animated visualizations. 
 • seaborn (sns): For high-level, aesthetically pleasing statistical data visualization. 
+
 Machine Learning (scikit-learn) 
 • sklearn (sl): open source ML library. 
 • PCA: Dimensionality reduction technique to transform features. 
@@ -55,7 +67,6 @@ Machine Learning (scikit-learn)
 • LogisticRegression: Logistic regression model for binary classification. 
 • SGDClassifier: Stochastic gradient descent-based classifier for large-scale learning. 
 • accuracy_score: Metric to evaluate the accuracy of a model. 
-10 
 • confusion_matrix: To analyze model prediction results. 
 • roc_curve: To compute and plot the ROC curve. 
 • roc_auc_score: To calculate the Area Under the ROC Curve (AUC). 
@@ -64,18 +75,24 @@ Machine Learning (scikit-learn)
 • train_test_split: To split data into training and testing sets. 
 • Pipeline: To chain multiple preprocessing steps and a model into one pipeline. 
 • PolynomialFeatures: To generate polynomial and interaction features for models. 
+
 Utilities 
 • Counter: To count occurrences of elements in a collection. 
 • tqdm: To display progress bars for loops and processes. 
 • tabulate: To format and display tabular data in a readable format. 
+
 Additional Libraries 
 • streamlit (st): For building interactive web-based data science applications. 
 • datetime: To work with dates and times. 
 • warnings: To manage and suppress warnings during code execution. 
+
 User Interface:  Streamlit 
-11 
+
+
 Chapter 2: Data Collection & Data cleaning 
+
 2.1 Data collection 
+
 We used 3 datasets from Kaggle site and compiled them to form a single dataset. The 
 dataset has a dimension of 23,921 x 25. It comprises of all the international matches played 
 from 1993-2022 showing the home and away team, the goals they scored, the goals they 
@@ -84,18 +101,15 @@ or an official tournament. It also displayed their FIFA rank, FIFA points and va
 parameters like gk, midfield, defense and attack score which helped in predicting the match 
 outcomes. You could refer to Table 1 to view the attributes and dimensions of the dataset 
 used. 
-Figure 1: Dimension of the dataset 
-Table 1: The above two tables display the international matches that has been played from 
-1993-2022. It also displays the different attributes like the match date, home and away team’s 
-rank , their scores , total points and many more. 
-2.2 Data cleaning 
+
+Data cleaning 
 We cleaned the data by handling missing values through imputation or removal, 
 eliminating duplicates, and standardizing formats for consistency. Outliers were addressed 
 by removal or capping, and irrelevant columns were dropped to reduce noise. Finally, 
 numerical features were scaled to ensure compatibility with machine learning algorithms, 
 resulting in a clean and reliable dataset for analysis. 
-12 
-2.3 Challenges faced 
+
+Challenges faced 
 Before acquiring the structured dataset used in this project, we attempted web scraping to 
 collect match-related data, which presented several significant challenges. 
 1. Scattered Data Sources: The data was not consolidated in a single location but was 
@@ -120,10 +134,14 @@ significant memory, limiting its effectiveness for large-scale scraping tasks.
 to manually handle several aspects of the scraping process, such as making HTTP 
 requests, managing sessions, and reformatting the data to make it usable. This added 
 extra overhead to the already tedious process. 
-13 
+
+
 Chapter 3: Selection of algorithms 
+
 3.1 Algorithms we used 
+
 →Logistic regression 
+
 we used Logistic Regression as one of the foundational models. Logistic regression is 
 effective for predicting binary outcomes, in this case, whether a team will win a match 
 or not. The model uses input features such as average rank, rank difference, point 
@@ -146,7 +164,6 @@ when dealing with patterns that were not linear.
 The Pipeline we used in the workflow combined both polynomial feature generation 
 and logistic regression into a seamless process, ensuring all steps happened in the 
 correct order. This prevented the model from being trained on the entire dataset, which 
-14 
 would otherwise lead to data leakage. It also ensured that only the training set was used 
 during the fitting phase, leading to a more reliable model evaluation. 
 →logistic regression with hyperparameter tunning 
